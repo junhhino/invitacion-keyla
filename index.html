@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Una misión especial para Keyla</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Great+Vibes&family=Playfair+Display:wght@500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --gold: #f5d27a;
+      --soft-gold: #ffe9a8;
+      --cream: #fff7e6;
+      --red: #8f1024;
+      --dark: #08040b;
+      --glass: rgba(255,255,255,.08);
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      color: var(--cream);
+      background:
+        radial-gradient(circle at top left, rgba(156, 18, 42, .42), transparent 35%),
+        radial-gradient(circle at bottom right, rgba(36, 72, 140, .25), transparent 35%),
+        linear-gradient(135deg, #050206 0%, #160813 52%, #050206 100%);
+      font-family: "Montserrat", sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background-image:
+        radial-gradient(circle, rgba(255,255,255,.7) 1px, transparent 1.6px),
+        radial-gradient(circle, rgba(245,210,122,.45) 1px, transparent 1.4px);
+      background-size: 58px 58px, 97px 97px;
+      opacity: .16;
+      animation: stars 13s linear infinite;
+    }
+
+    @keyframes stars {
+      from { transform: translateY(0); }
+      to { transform: translateY(58px); }
+    }
+
+    .curtain {
+      position: fixed;
+      top: 0;
+      bottom: 0;
+      width: 50%;
+      z-index: 20;
+      background:
+        repeating-linear-gradient(
+          90deg,
+          #5b0714 0px,
+          #8f1024 28px,
+          #3b030c 56px
+        );
+      box-shadow: inset 0 0 70px rgba(0,0,0,.85);
+      animation: openCurtain 1.8s ease forwards;
+      animation-delay: .4s;
+    }
+
+    .curtain.left { left: 0; --move: -105%; }
+    .curtain.right { right: 0; --move: 105%; }
+
+    @keyframes openCurtain {
+      to { transform: translateX(var(--move)); }
+    }
+
+    main {
+      width: min(1020px, 94vw);
+      margin: 0 auto;
+      padding: 34px 0 54px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .screen {
+      min-height: 88vh;
+      display: grid;
+      place-items: center;
+      text-align: center;
+    }
+    .stage,
+    .invite-card {
+      width: 100%;
+      border: 1px solid rgba(245, 210, 122, .34);
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.1), rgba(255,255,255,.04)),
+        rgba(6, 3, 8, .78);
+      border-radius: 32px;
+      box-shadow:
+        0 25px 90px rgba(0,0,0,.58),
+        0 0 55px rgba(245,210,122,.13);
+      backdrop-filter: blur(10px);
+      padding: clamp(22px, 5vw, 48px);
+      overflow: hidden;
+      position: relative;
+    }
+
+    .stage::before,
+    .invite-card::before {
+      content: "";
+      position: absolute;
+      inset: 14px;
+      border-radius: 24px;
+      border: 1px solid rgba(245, 210, 122, .15);
+      pointer-events: none;
+    }
+
+    .pretitle {
+      font-family: "Cinzel", serif;
+      color: var(--soft-gold);
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      font-size: .82rem;
+      margin-bottom: 20px;
+    }
+
+    .scene-window {
+      position: relative;
+      min-height: 470px;
+      display: grid;
+      place-items: center;
+      border-radius: 28px;
+      margin: 0 auto 20px;
+      background:
+        radial-gradient(circle at center, rgba(245,210,122,.16), transparent 58%),
+        linear-gradient(180deg, rgba(255,255,255,.04), rgba(0,0,0,.16));
+      border: 1px solid rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .scene-window::after {
+      content: "";
+      position: absolute;
+      left: 18%;
+      right: 18%;
+      bottom: 30px;
+      height: 30px;
+      background: rgba(0,0,0,.58);
+      border-radius: 50%;
+      filter: blur(10px);
+    }
+
+    .character-scene {
+      position: absolute;
+      inset: 0;
+      display: grid;
+      grid-template-columns: 46% 54%;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      padding: 24px;
+      animation: sceneCycle 18s linear infinite;
+    }
+
+    .character-scene:nth-child(1) { animation-delay: 0s; }
+    .character-scene:nth-child(2) { animation-delay: 4.5s; grid-template-columns: 54% 46%; }
+    .character-scene:nth-child(3) { animation-delay: 9s; }
+    .character-scene:nth-child(4) { animation-delay: 13.5s; grid-template-columns: 54% 46%; }
+
+    @keyframes sceneCycle {
+      0% { opacity: 0; transform: translateY(18px) scale(.98); }
+      6% { opacity: 1; transform: translateY(0) scale(1); }
+      20% { opacity: 1; transform: translateY(0) scale(1); }
+      25% { opacity: 0; transform: translateY(-12px) scale(.99); }
+      100% { opacity: 0; }
+    }
+
+    .character {
+      max-height: 390px;
+      max-width: 100%;
+      object-fit: contain;
+      z-index: 2;
+      filter:
+        drop-shadow(0 0 16px rgba(245,210,122,.34))
+        drop-shadow(0 20px 30px rgba(0,0,0,.48));
+      animation: characterFloat 3.6s ease-in-out infinite;
+    }
+
+    .character.lefty { transform-origin: bottom center; }
+    .character.righty { transform-origin: bottom center; animation-name: characterFloatAlt; }
+
+    @keyframes characterFloat {
+      0%, 100% { transform: translateY(0) rotate(-.7deg); }
+      50% { transform: translateY(-9px) rotate(.9deg); }
+    }
+
+    @keyframes characterFloatAlt {
+      0%, 100% { transform: translateY(0) rotate(.6deg); }
+      50% { transform: translateY(-10px) rotate(-.8deg); }
+    }
+
+    .dialogue-card {
+      z-index: 3;
+      text-align: left;
+      padding: clamp(16px, 3vw, 26px);
+      border-radius: 24px;
+      background:
+        linear-gradient(180deg, rgba(255,255,255,.12), rgba(255,255,255,.06)),
+        rgba(0,0,0,.35);
+      border: 1px solid rgba(245,210,122,.27);
+      box-shadow: 0 18px 35px rgba(0,0,0,.32);
+    }
+
+    .scene-2 .dialogue-card,
+    .scene-4 .dialogue-card { grid-column: 1; grid-row: 1; }
+
+    .scene-2 .character,
+    .scene-4 .character { grid-column: 2; grid-row: 1; }
+
+    .speaker {
+      display: block;
+      font-family: "Cinzel", serif;
+      font-size: .82rem;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 9px;
+    }
+
+    .line {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.1rem, 3vw, 1.55rem);
+      line-height: 1.42;
+      color: rgba(255,247,230,.95);
+    }
+
+    .start-area {
+      min-height: 64px;
+      display: grid;
+      place-items: center;
+    }
+
+    .start-btn,
+    .main-btn,
+    .secondary-btn {
+      border: 0;
+      cursor: pointer;
+      border-radius: 999px;
+      padding: 15px 24px;
+      font-weight: 700;
+      letter-spacing: .02em;
+      transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+      font-family: "Montserrat", sans-serif;
+    }
+
+    .start-btn {
+      background: linear-gradient(135deg, #fff0b8, #d19c2d);
+      color: #261203;
+      box-shadow: 0 14px 30px rgba(245,210,122,.25);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+
+    @keyframes pulse {
+      0%, 100% { box-shadow: 0 14px 30px rgba(245,210,122,.22); }
+      50% { box-shadow: 0 14px 44px rgba(245,210,122,.42); }
+    }
+
+    button:hover,
+    a:hover { transform: translateY(-2px); }
+
+    .hidden { display: none; }
+
+    .invite-card { animation: revealInvite .8s ease both; }
+
+    @keyframes revealInvite {
+      from { opacity: 0; transform: translateY(26px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .for-keyla {
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(4.2rem, 15vw, 8rem);
+      line-height: .95;
+      margin: 0 0 18px;
+      color: #fff3cc;
+      text-shadow: 0 0 22px rgba(245,210,122,.28);
+      font-weight: 400;
+    }
+
+    h2 {
+      font-family: "Cinzel", serif;
+      color: var(--gold);
+      font-size: clamp(1.7rem, 6vw, 3.1rem);
+      margin: 12px 0;
+      letter-spacing: .08em;
+    }
+
+    .subtitle {
+      max-width: 740px;
+      margin: 0 auto 26px;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.15rem, 4vw, 1.55rem);
+      color: rgba(255,247,230,.9);
+      line-height: 1.55;
+    }
+
+    .ticket {
+      max-width: 740px;
+      margin: 28px auto;
+      padding: 24px;
+      border-radius: 26px;
+      background: linear-gradient(135deg, rgba(245,210,122,.17), rgba(255,255,255,.05));
+      border: 1px dashed rgba(245,210,122,.55);
+    }
+
+    .details {
+      display: grid;
+      gap: 12px;
+      font-size: 1.04rem;
+    }
+
+    .detail {
+      padding: 12px 14px;
+      border-radius: 16px;
+      background: rgba(0,0,0,.22);
+      border: 1px solid rgba(255,255,255,.09);
+    }
+
+    .question {
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.55rem, 5vw, 2.35rem);
+      margin: 28px 0 22px;
+      color: #fff1c2;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .main-btn {
+      display: inline-block;
+      text-decoration: none;
+      background: linear-gradient(135deg, #fff0b8, #d19c2d);
+      color: #241102;
+      box-shadow: 0 14px 30px rgba(245,210,122,.23);
+    }
+
+    .secondary-btn {
+      background: rgba(255,255,255,.08);
+      color: var(--cream);
+      border: 1px solid rgba(245,210,122,.34);
+    }
+
+    .buzz-note {
+      display: none;
+      max-width: 620px;
+      margin: 18px auto 0;
+      padding: 16px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(245,210,122,.22);
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+    }
+
+    .countdown {
+      margin-top: 20px;
+      color: rgba(255,247,230,.72);
+      font-size: .95rem;
+    }
+
+    .tm {
+      font-size: .55em;
+      vertical-align: super;
+      letter-spacing: .03em;
+    }
+
+    footer {
+      text-align: center;
+      color: rgba(255,247,230,.52);
+      font-size: .82rem;
+      margin-top: 24px;
+    }
+
+    @media (max-width: 760px) {
+      .scene-window { min-height: 610px; }
+      .character-scene,
+      .character-scene:nth-child(2),
+      .character-scene:nth-child(3),
+      .character-scene:nth-child(4) {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+        align-content: center;
+        gap: 12px;
+      }
+
+      .character {
+        max-height: 330px;
+        margin: 0 auto;
+      }
+
+      .dialogue-card,
+      .scene-2 .dialogue-card,
+      .scene-4 .dialogue-card {
+        grid-column: 1;
+        grid-row: 2;
+        text-align: center;
+      }
+
+      .scene-2 .character,
+      .scene-4 .character {
+        grid-column: 1;
+        grid-row: 1;
+      }
+
+      .actions { flex-direction: column; }
+      .main-btn, .secondary-btn, .start-btn { width: 100%; }
+    }
+
+    @media (max-width: 440px) {
+      main { padding-top: 22px; }
+      .stage, .invite-card { border-radius: 24px; }
+      .scene-window { min-height: 560px; }
+      .character { max-height: 290px; }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="curtain left"></div>
+  <div class="curtain right"></div>
+
+  <main>
+    <section id="intro" class="screen">
+      <div class="stage">
+        <div class="pretitle">Una pequeña escena antes de la función</div>
+
+        <div class="scene-window">
+          <div class="character-scene scene-1">
+            <img class="character lefty" src="assets/woody-saludo.png" alt="Woody saludando" />
+            <div class="dialogue-card">
+              <span class="speaker">Woody</span>
+              <div class="line">Hola Keyla... Tenemos una misión muy importante para ti.</div>
+            </div>
+          </div>
+
+          <div class="character-scene scene-2">
+            <img class="character righty" src="assets/buzz-saludo.png" alt="Buzz Lightyear saludando" />
+            <div class="dialogue-card">
+              <span class="speaker">Buzz</span>
+              <div class="line">Confirmado. Hemos detectado una oportunidad extraordinaria para una noche de cine.</div>
+            </div>
+          </div>
+
+          <div class="character-scene scene-3">
+            <img class="character lefty" src="assets/woody-segundo.png" alt="Woody hablando" />
+            <div class="dialogue-card">
+              <span class="speaker">Woody</span>
+              <div class="line">Según nuestros cálculos... una buena película, palomitas y una excelente compañía tienen una probabilidad muy alta de éxito.</div>
+            </div>
+          </div>
+
+          <div class="character-scene scene-4">
+            <img class="character righty" src="assets/buzz-final.png" alt="Buzz Lightyear con casco" />
+            <div class="dialogue-card">
+              <span class="speaker">Buzz</span>
+              <div class="line">Después de revisar todos los reportes... solo falta una decisión para completar la misión.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="start-area">
+          <button class="start-btn" onclick="showInvite()">✨ Ver la invitación especial</button>
+        </div>
+      </div>
+    </section>
+
+    <section id="invite" class="screen hidden">
+      <div class="invite-card">
+        <div class="pretitle">Invitación especial de Fran para</div>
+        <div class="for-keyla">La Bella Keyla</div>
+
+        <p class="subtitle">
+          Tengo una invitación especial para ti. Dicen que algunas historias merecen ser vistas en pantalla grande,
+          pero creo que las mejores historias empiezan compartiendo una buena película, unas palomitas y una agradable compañía.
+        </p>
+
+        <div class="ticket">
+          <h2>Toy Story 5</h2>
+          <div class="details">
+            <div class="detail">📍 Sala Cinemark Paseo La Galería</div>
+            <div class="detail">📅 Jueves 18 de junio</div>
+            <div class="detail">🕗 20:00 hs</div>
+            <div class="detail">🍿 Dress code: tu hermosa sonrisa y ganas de pasarla bonito</div>
+          </div>
+        </div>
+
+        <div class="question">¿Me acompañarías al cine?</div>
+
+        <div class="actions">
+          <a id="whatsappLink" class="main-btn" target="_blank" rel="noopener">
+            🍿 Sí, acepto la misión
+          </a>
+          <button class="secondary-btn" onclick="showBuzzNote()">
+            🤔 Necesito hablar con Buzz primero
+          </button>
+        </div>
+
+        <div id="buzzNote" class="buzz-note">
+          Buzz está analizando la situación...<br>
+          Probabilidad de una buena noche de cine: <strong>99.9%</strong> 🚀✨
+        </div>
+
+        <div id="countdown" class="countdown"></div>
+      </div>
+    </section>
+
+    <footer>
+      Comité Internacional de Buenas Compañias y Planes Perfectos <sup class="tm">TM</sup>
+    </footer>
+  </main>
+
+  <script>
+    const franWhatsappNumber = "595972682633";
+    const emoji = (...codes) => String.fromCodePoint(...codes);
+
+    const whatsappMessage = `Hola Fran
+
+Después de consultar con Woody y Buzz...
+Acepto la misión.
+
+Confirmo mi asistencia para Toy Story 5
+
+Nos vemos en el cine`;
+
+    const whatsappLink = document.getElementById("whatsappLink");
+    const whatsappParams = new URLSearchParams({ text: whatsappMessage });
+    whatsappLink.href = `https://wa.me/${franWhatsappNumber}?${whatsappParams.toString()}`;
+
+    function showInvite() {
+      document.getElementById("intro").classList.add("hidden");
+      document.getElementById("invite").classList.remove("hidden");
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+
+    function showBuzzNote() {
+      const note = document.getElementById("buzzNote");
+      note.style.display = "block";
+      setTimeout(() => {
+        note.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
+    }
+
+    function updateCountdown() {
+      const countdown = document.getElementById("countdown");
+      const now = new Date();
+      let year = now.getFullYear();
+      let target = new Date(year, 5, 18, 20, 0, 0);
+
+      if (target < now) {
+        target = new Date(year + 1, 5, 18, 20, 0, 0);
+      }
+
+      const diff = target - now;
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+
+      countdown.textContent = `Cuenta regresiva para la función: ${days} días, ${hours} horas y ${minutes} minutos.`;
+    }
+
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+  </script>
+</body>
+</html>
