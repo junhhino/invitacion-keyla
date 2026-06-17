@@ -376,6 +376,355 @@
       font-size: .95rem;
     }
 
+    .final-mission {
+      width: 100%;
+      min-height: 88vh;
+      display: grid;
+      align-items: center;
+      gap: 22px;
+    }
+
+    .mission-hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr);
+      gap: clamp(18px, 4vw, 34px);
+      align-items: center;
+      text-align: left;
+    }
+
+    .mission-copy {
+      position: relative;
+      z-index: 2;
+    }
+
+    .mission-status {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 9px 14px;
+      margin-bottom: 18px;
+      border-radius: 999px;
+      color: #1d0d02;
+      background: linear-gradient(135deg, #fff1bd, #d6a33b);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      box-shadow: 0 12px 28px rgba(245,210,122,.2);
+    }
+
+    .mission-title {
+      margin: 0;
+      font-family: "Cinzel", serif;
+      font-size: clamp(2.7rem, 9vw, 6.4rem);
+      line-height: .94;
+      color: #fff3cc;
+      text-shadow: 0 0 34px rgba(245,210,122,.22);
+    }
+
+    .mission-title span {
+      display: block;
+      font-family: "Great Vibes", cursive;
+      font-size: 1.08em;
+      font-weight: 400;
+      color: var(--gold);
+      letter-spacing: 0;
+    }
+
+    .mission-message {
+      max-width: 650px;
+      margin: 22px 0 0;
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.15rem, 3vw, 1.55rem);
+      line-height: 1.56;
+      color: rgba(255,247,230,.9);
+    }
+
+    .countdown-panel {
+      margin-top: 24px;
+      padding: 18px;
+      border-radius: 22px;
+      background: rgba(0,0,0,.28);
+      border: 1px solid rgba(245,210,122,.25);
+    }
+
+    .countdown-label {
+      display: block;
+      margin-bottom: 7px;
+      color: var(--soft-gold);
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+    }
+
+    .countdown-panel .countdown {
+      margin: 0;
+      color: #fff7e6;
+      font-family: "Cinzel", serif;
+      font-size: clamp(1.1rem, 3vw, 1.7rem);
+    }
+
+    .timer {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 10px;
+    }
+
+    .timer-part {
+      padding: 14px 10px;
+      border-radius: 18px;
+      text-align: center;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(245,210,122,.22);
+    }
+
+    .timer-value {
+      display: block;
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      font-size: clamp(1.65rem, 5vw, 2.8rem);
+      line-height: 1;
+    }
+
+    .timer-label {
+      display: block;
+      margin-top: 7px;
+      color: rgba(255,247,230,.72);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .poster-card {
+      position: relative;
+      min-height: 560px;
+      display: grid;
+      place-items: end center;
+      padding: 24px;
+      border-radius: 30px;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 50% 18%, rgba(245,210,122,.28), transparent 34%),
+        linear-gradient(180deg, rgba(31,74,152,.42), rgba(9,4,12,.9));
+      border: 1px solid rgba(245,210,122,.32);
+      box-shadow: inset 0 0 70px rgba(0,0,0,.42), 0 26px 70px rgba(0,0,0,.48);
+    }
+
+    .poster-card::before {
+      content: "";
+      position: absolute;
+      inset: 18px;
+      border: 1px solid rgba(255,255,255,.13);
+      border-radius: 24px;
+    }
+
+    .poster-card::after {
+      content: "TOY STORY 5";
+      position: absolute;
+      top: 24px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: max-content;
+      color: rgba(255,247,230,.72);
+      font-family: "Cinzel", serif;
+      font-size: clamp(1rem, 3vw, 1.45rem);
+      letter-spacing: .2em;
+    }
+
+    .poster-characters {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: 100%;
+      min-height: 390px;
+    }
+
+    .poster-characters img {
+      max-width: 58%;
+      max-height: 430px;
+      object-fit: contain;
+      filter: drop-shadow(0 22px 32px rgba(0,0,0,.55));
+      animation: characterFloat 3.8s ease-in-out infinite;
+    }
+
+    .poster-characters img:last-child {
+      margin-left: -18%;
+      animation-name: characterFloatAlt;
+    }
+
+    .mission-ticket {
+      position: relative;
+      z-index: 2;
+      width: 100%;
+      margin-top: 10px;
+      padding: 18px;
+      border-radius: 20px;
+      text-align: center;
+      background: rgba(5,2,6,.72);
+      border: 1px dashed rgba(245,210,122,.52);
+      backdrop-filter: blur(6px);
+    }
+
+    .mission-ticket strong {
+      display: block;
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      font-size: 1.05rem;
+      letter-spacing: .08em;
+      margin-bottom: 8px;
+    }
+
+    .mission-ticket div {
+      color: rgba(255,247,230,.84);
+      line-height: 1.7;
+    }
+
+    .mission-grid {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 14px;
+      align-items: stretch;
+    }
+
+    .mission-box {
+      min-height: 150px;
+      height: 100%;
+      padding: 20px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.07);
+      border: 1px solid rgba(245,210,122,.18);
+      box-shadow: 0 14px 34px rgba(0,0,0,.22);
+    }
+
+    .mission-box h3 {
+      margin: 0 0 12px;
+      color: var(--gold);
+      font-family: "Cinzel", serif;
+      font-size: .95rem;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .mission-box p {
+      margin: 0;
+      color: rgba(255,247,230,.84);
+      line-height: 1.55;
+    }
+
+    .poem-card {
+      grid-column: 1 / -1;
+      padding: clamp(22px, 4vw, 34px);
+      border-radius: 28px;
+      text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(245,210,122,.16), transparent 48%),
+        rgba(255,255,255,.07);
+      border: 1px solid rgba(245,210,122,.28);
+      box-shadow: 0 18px 48px rgba(0,0,0,.28);
+    }
+
+    .poem-card h3 {
+      margin: 0 0 18px;
+      color: var(--gold);
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(2.2rem, 8vw, 4rem);
+      font-weight: 400;
+    }
+
+    .poem-card p {
+      max-width: 760px;
+      margin: 0 auto;
+      color: rgba(255,247,230,.92);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      line-height: 1.75;
+      white-space: pre-line;
+    }
+
+    .heart-reveal {
+      display: none;
+      max-width: 760px;
+      margin: 26px auto 0;
+      padding: clamp(24px, 5vw, 40px);
+      border-radius: 30px;
+      color: #fff7e6;
+      background:
+        radial-gradient(circle at top left, rgba(245,210,122,.22), transparent 34%),
+        radial-gradient(circle at bottom right, rgba(143,16,36,.38), transparent 42%),
+        linear-gradient(145deg, rgba(143,16,36,.34), rgba(8,4,11,.86));
+      border: 1px solid rgba(245,210,122,.42);
+      box-shadow:
+        0 24px 60px rgba(0,0,0,.38),
+        inset 0 0 36px rgba(245,210,122,.08);
+      font-family: "Playfair Display", serif;
+      font-size: clamp(1.15rem, 3vw, 1.45rem);
+      line-height: 1.75;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .heart-reveal::before {
+      display: block;
+      margin-bottom: 16px;
+      color: var(--gold);
+      font-family: "Great Vibes", cursive;
+      font-size: clamp(2.4rem, 8vw, 4.2rem);
+      line-height: 1;
+      text-shadow: 0 0 18px rgba(245,210,122,.26);
+    }
+
+    .heart-reveal::after {
+      content: "";
+      position: absolute;
+      left: 28px;
+      right: 28px;
+      top: 26px;
+      bottom: 26px;
+      border: 1px solid rgba(245,210,122,.18);
+      border-radius: 22px;
+      pointer-events: none;
+    }
+
+    .heart-reveal strong {
+      display: block;
+      margin: 14px 0 10px;
+      color: var(--soft-gold);
+      font-family: "Cinzel", serif;
+      font-size: clamp(1.7rem, 6vw, 3rem);
+      letter-spacing: .12em;
+      text-align: center;
+      text-shadow: 0 0 24px rgba(245,210,122,.28);
+    }
+
+    .checklist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      display: grid;
+      gap: 9px;
+      color: rgba(255,247,230,.86);
+    }
+
+    .checklist li::before {
+      content: "✓";
+      margin-right: 8px;
+      color: var(--gold);
+      font-weight: 800;
+    }
+
+    .final-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+      align-items: center;
+      margin-top: 26px;
+    }
+
     .tm {
       font-size: .55em;
       vertical-align: super;
@@ -422,6 +771,13 @@
 
       .actions { flex-direction: column; }
       .main-btn, .secondary-btn, .start-btn { width: 100%; }
+
+      .mission-hero { grid-template-columns: 1fr; text-align: center; }
+      .mission-message { margin-left: auto; margin-right: auto; }
+      .final-actions { justify-content: center; }
+      .poster-card { min-height: 500px; }
+      .mission-grid { grid-template-columns: 1fr; }
+      .timer { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 440px) {
@@ -438,87 +794,89 @@
   <div class="curtain right"></div>
 
   <main>
-    <section id="intro" class="screen">
-      <div class="stage">
-        <div class="pretitle">Una pequeña escena antes de la función</div>
+    <section class="final-mission">
+      <div class="stage mission-hero">
+        <div class="mission-copy">
+          <div class="mission-status" id="missionStatus">Cita confirmada por Keyla</div>
+          <h1 class="mission-title">Mañana <span>nos espera</span></h1>
 
-        <div class="scene-window">
-          <div class="character-scene scene-1">
-            <img class="character lefty" src="assets/woody-saludo.png" alt="Woody saludando" />
-            <div class="dialogue-card">
-              <span class="speaker">Woody</span>
-              <div class="line">Hola Keyla... Tenemos una misión muy importante para ti.</div>
-            </div>
+          <p class="mission-message" id="missionMessage">
+            Keyla, la invitación ya fue aceptada y eso la hace mucho más especial. Mañana tendremos cine,
+            una buena historia en pantalla grande y una sorpresa que estaba guardando para revelarte ahora.
+          </p>
+
+          <div class="countdown-panel">
+            <span class="countdown-label">Tiempo para la escena principal</span>
+            <div id="countdown" class="countdown"></div>
           </div>
 
-          <div class="character-scene scene-2">
-            <img class="character righty" src="assets/buzz-saludo.png" alt="Buzz Lightyear saludando" />
-            <div class="dialogue-card">
-              <span class="speaker">Buzz</span>
-              <div class="line">Confirmado. Hemos detectado una oportunidad extraordinaria para una noche de cine.</div>
-            </div>
+          <div class="final-actions">
+            <button class="secondary-btn" onclick="showHeartReveal()">
+              💛 Revelar lo que siento
+            </button>
           </div>
 
-          <div class="character-scene scene-3">
-            <img class="character lefty" src="assets/woody-segundo.png" alt="Woody hablando" />
-            <div class="dialogue-card">
-              <span class="speaker">Woody</span>
-              <div class="line">Según nuestros cálculos... una buena película, palomitas y una excelente compañía tienen una probabilidad muy alta de éxito.</div>
-            </div>
-          </div>
-
-          <div class="character-scene scene-4">
-            <img class="character righty" src="assets/buzz-final.png" alt="Buzz Lightyear con casco" />
-            <div class="dialogue-card">
-              <span class="speaker">Buzz</span>
-              <div class="line">Después de revisar todos los reportes... solo falta una decisión para completar la misión.</div>
-            </div>
+          <div id="buzzNote" class="buzz-note">
+            Woody y Buzz dan la misión por confirmada: el cine era solo la primera parte. La segunda estaba planeada en secreto.
           </div>
         </div>
 
-        <div class="start-area">
-          <button class="start-btn" onclick="showInvite()">✨ Ver la invitación especial</button>
+        <div class="poster-card" aria-label="Poster especial de la cita al cine">
+          <div class="poster-characters">
+            <img src="assets/woody-segundo.png" alt="Woody emocionado por la cita" />
+            <img src="assets/buzz-final.png" alt="Buzz listo para la misión" />
+          </div>
+
+          <div class="mission-ticket">
+            <strong>Boleto reservado para Keyla</strong>
+            <div>Cinemark Paseo La Galería</div>
+            <div>Jueves 18 de junio · 20:00 hs</div>
+            <div>Sorpresa revelada: sushi por el Día del Sushi</div>
+          </div>
         </div>
       </div>
-    </section>
 
-    <section id="invite" class="screen hidden">
-      <div class="invite-card">
-        <div class="pretitle">Invitación especial de Fran para</div>
-        <div class="for-keyla">La Bella Keyla</div>
+      <div class="mission-grid">
+        <article class="mission-box">
+          <h3>Checklist</h3>
+          <ul class="checklist">
+            <li>Cita confirmada</li>
+            <li>Película lista</li>
+            <li>Sorpresa revelada: sushi después del cine</li>
+            <li>Buena compañía asegurada</li>
+          </ul>
+        </article>
 
-        <p class="subtitle">
-          Tengo una invitación especial para ti. Dicen que algunas historias merecen ser vistas en pantalla grande,
-          pero creo que las mejores historias empiezan compartiendo una buena película, unas palomitas y una agradable compañía.
-        </p>
+        <article class="mission-box">
+          <h3>Mensaje</h3>
+          <p>
+            Me alegra mucho tener a alguien con quien compartir una película, una conversación bonita
+            y ahora también una sorpresa que tenía guardada: sushi para celebrar el Día del Sushi contigo.
+          </p>
+        </article>
 
-        <div class="ticket">
-          <h2>Toy Story 5</h2>
-          <div class="details">
-            <div class="detail">📍 Sala Cinemark Paseo La Galería</div>
-            <div class="detail">📅 Jueves 18 de junio</div>
-            <div class="detail">🕗 20:00 hs</div>
-            <div class="detail">🍿 Dress code: tu hermosa sonrisa y ganas de pasarla bonito</div>
+        <article class="poem-card">
+          <h3>Un pequeño poema para ti</h3>
+          <p>Entre luces de cine y una historia por mirar,
+mañana hay una escena que quiero guardar.
+La primera era la película, la segunda la guardé:
+sushi después del cine, porque en ti pensé.
+
+Me alegra compartir contigo este gusto tan bonito,
+reír, conversar y elegir juntos otro rollito.
+Y aunque aún guardo algo muy dentro de mí,
+mañana me emociona poder compartirlo junto a ti.
+Tu compañía me encanta, me calma y me hace sonreír,
+y por eso esta sorpresa la preparé pensando en ti.</p>
+
+          <div id="heartReveal" class="heart-reveal">
+            Keyla, algo hermoso ha comenzado a crecer dentro de mí, y hoy me nace decírtelo con sinceridad:
+            <strong>TE QUIERO</strong>
+            Con cada día que pasa, te vas convirtiendo en alguien más importante para mí.
+            Y sin temor a expresar lo que siento, quiero que sepas que procuraré demostrártelo cada vez más:
+            con acciones, palabras, gestos, detalles sinceros y la forma en que elija cuidarte en cada momento.
           </div>
-        </div>
-
-        <div class="question">¿Me acompañarías al cine?</div>
-
-        <div class="actions">
-          <a id="whatsappLink" class="main-btn" target="_blank" rel="noopener">
-            🍿 Sí, acepto la misión
-          </a>
-          <button class="secondary-btn" onclick="showBuzzNote()">
-            🤔 Necesito hablar con Buzz primero
-          </button>
-        </div>
-
-        <div id="buzzNote" class="buzz-note">
-          Buzz está analizando la situación...<br>
-          Probabilidad de una buena noche de cine: <strong>99.9%</strong> 🚀✨
-        </div>
-
-        <div id="countdown" class="countdown"></div>
+        </article>
       </div>
     </section>
 
@@ -528,56 +886,92 @@
   </main>
 
   <script>
-    const franWhatsappNumber = "595972682633";
-    const emoji = (...codes) => String.fromCodePoint(...codes);
-
-    const whatsappMessage = `Hola Fran
-
-Después de consultar con Woody y Buzz...
-Acepto la misión.
-
-Confirmo mi asistencia para Toy Story 5
-
-Nos vemos en el cine`;
-
-    const whatsappLink = document.getElementById("whatsappLink");
-    const whatsappParams = new URLSearchParams({ text: whatsappMessage });
-    whatsappLink.href = `https://wa.me/${franWhatsappNumber}?${whatsappParams.toString()}`;
-
-    function showInvite() {
-      document.getElementById("intro").classList.add("hidden");
-      document.getElementById("invite").classList.remove("hidden");
-      window.scrollTo({ top: 0, behavior: "smooth" });
+    function showHeartReveal() {
+      const note = document.getElementById("buzzNote");
+      const reveal = document.getElementById("heartReveal");
+      note.style.display = "block";
+      reveal.style.display = "block";
+      setTimeout(() => {
+        reveal.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 100);
     }
 
-    function showBuzzNote() {
-      const note = document.getElementById("buzzNote");
-      note.style.display = "block";
-      setTimeout(() => {
-        note.scrollIntoView({ behavior: "smooth", block: "center" });
-      }, 100);
+    function renderTimer(hours, minutes, seconds) {
+      const format = (value) => String(value).padStart(2, "0");
+
+      return `
+        <div class="timer" aria-label="Cuenta regresiva">
+          <div class="timer-part">
+            <span class="timer-value">${format(hours)}</span>
+            <span class="timer-label">Horas</span>
+          </div>
+          <div class="timer-part">
+            <span class="timer-value">${format(minutes)}</span>
+            <span class="timer-label">Minutos</span>
+          </div>
+          <div class="timer-part">
+            <span class="timer-value">${format(seconds)}</span>
+            <span class="timer-label">Segundos</span>
+          </div>
+        </div>
+      `;
     }
 
     function updateCountdown() {
       const countdown = document.getElementById("countdown");
+      const missionStatus = document.getElementById("missionStatus");
+      const missionMessage = document.getElementById("missionMessage");
       const now = new Date();
-      let year = now.getFullYear();
-      let target = new Date(year, 5, 18, 20, 0, 0);
+      const target = new Date(now.getFullYear(), 5, 18, 20, 0, 0);
+      const isDateDay = now.getMonth() === 5 && now.getDate() === 18;
+      const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1);
+      const isTomorrow = tomorrow.getMonth() === target.getMonth() && tomorrow.getDate() === target.getDate();
 
-      if (target < now) {
-        target = new Date(year + 1, 5, 18, 20, 0, 0);
+      if (isDateDay && now <= target) {
+        const diffToday = target - now;
+        const hoursToday = Math.floor(diffToday / (1000 * 60 * 60));
+        const minutesToday = Math.floor((diffToday / (1000 * 60)) % 60);
+        const secondsToday = Math.floor((diffToday / 1000) % 60);
+
+        missionStatus.textContent = "Hoy es nuestra cita";
+        missionMessage.textContent = "Keyla, llegó el día. Hoy tenemos cine y también esa sorpresa que tenía guardada: sushi para compartir contigo.";
+        countdown.innerHTML = renderTimer(hoursToday, minutesToday, secondsToday);
+        return;
+      }
+
+      if (isDateDay && now > target) {
+        missionStatus.textContent = "La misión ya empezó";
+        missionMessage.textContent = "Keyla, esta era la escena que estaba esperando: cine, la sorpresa del sushi y tu compañía haciendo la noche especial.";
+        countdown.textContent = "Es momento de disfrutar nuestra cita.";
+        return;
       }
 
       const diff = target - now;
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
-      const minutes = Math.floor((diff / (1000 * 60)) % 60);
 
-      countdown.textContent = `Cuenta regresiva para la función: ${days} días, ${hours} horas y ${minutes} minutos.`;
+      if (diff < 0) {
+        missionStatus.textContent = "Misión cumplida";
+        missionMessage.textContent = "Keyla, esta invitación ya cumplió su propósito: convertirse en una noche especial contigo.";
+        countdown.textContent = "Gracias por ser parte de esta escena.";
+        return;
+      }
+
+      const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff / (1000 * 60)) % 60);
+      const seconds = Math.floor((diff / 1000) % 60);
+
+      if (isTomorrow || (days === 0 && hours < 24)) {
+        missionStatus.textContent = "Mañana es la cita esperada";
+        missionMessage.textContent = "Keyla, ya casi llega nuestra escena. La invitación se convirtió en plan confirmado y ahora puedo revelarte la sorpresa: después del cine iremos por sushi.";
+        countdown.innerHTML = renderTimer(hours, minutes, seconds);
+        return;
+      }
+
+      countdown.innerHTML = renderTimer(hours, minutes, seconds);
     }
 
     updateCountdown();
-    setInterval(updateCountdown, 60000);
+    setInterval(updateCountdown, 1000);
   </script>
 </body>
 </html>
